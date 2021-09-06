@@ -1,32 +1,32 @@
-apiVersion: apps/v1
+apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: my-python-deployment
+  name: "azureakscluster-fd19-deployment"
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: python-app
+      app: "azureakscluster-fd19"
   template:
     metadata:
       labels:
-        app: python-app
+        app: "azureakscluster-fd19"
     spec:
       containers:
-      - name: my-python-app
-        image: azureregapp.azurecr.io/azureregapp
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5000
+        - name: "azureakscluster-fd19"
+          image: "azureregapp.azurecr.io/azureregapp"
+          ports:
+          - containerPort: 5000
+
 # service type loadbalancer       
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-app-svc
+  name: azureakscluster-fd19-svc
 spec:
   selector:
-    app: python-app
+    app: azureakscluster-fd19
   ports:
     - protocol: TCP
       port: 5000
