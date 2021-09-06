@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "azureakscluster-fd19"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "azureakscluster-fd19"
+  template:
+    metadata:
+      labels:
+        app: "azureakscluster-fd19"
+    spec:
+      containers:
+        - name: "azureakscluster-fd19"
+          image: "azureregapp.azurecr.io/azureakscluster"
+          ports:
+          - containerPort: 5000
